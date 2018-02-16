@@ -4,12 +4,7 @@
 */
 
 import * as React from "react";
-import PropTypes from "prop-types";
-import {shallow, mount} from "enzyme";
 
-// setup file Working with React 16
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 
 import glob from "glob";
 
@@ -24,8 +19,9 @@ export default class AutoTestTools {
         //     if(process.env.NODE_ENV !== "production")
         //     // eslint-disable-next-line no-console
         //         console.warn("prop-types need mock");
-        if(JsxComponent.propTypes)
+        if(JsxComponent && JsxComponent.propTypes)
         {
+            
             let propTypes= JsxComponent.propTypes;
             let variants: {[key: string]: Array<mixed>} ={};
             Object.keys(propTypes).forEach((key)=>{
@@ -41,33 +37,4 @@ export default class AutoTestTools {
     findComponents(path){
         return glob(path,{sync:true, absolute: true});
     }
-    //     describe("AutoTestComponent", () => {
-    //         glob( path, ( err, files ) => {
-    //             console.log( files );
-    //             files.forEach(file=>{
-    //                 let JsxComponent=require("../"+file).default;
-    //                 let props=this.buildTestPropsCortege(JsxComponent);
-    //                 // if(process.env.NODE_ENV !== "production")
-    //                 // // eslint-disable-next-line no-console
-    //                 //     console.log(props);
-    //                 describe(`test render ${file}`,()=>{
-    //                 // if(JsxComponent.propTypes)
-    //                     {
-    //                         props.forEach(prop=>{
-    //                             if(process.env.NODE_ENV !== "production")
-    //                             // eslint-disable-next-line no-console
-    //                                 console.log(it);
-    //                             it(`render ${JSON.stringify(prop)}`,()=>{
-    //                                 if(process.env.NODE_ENV !== "production")
-    //                                     console.log(prop);
-    //                                 let wrapper = mount(<JsxComponent {...prop} />);
-    //                                 expect(wrapper.props()).toEqual(prop);
-    //                             });
-    //                         });
-    //                     }
-    //                 });
-    //             });
-    //         });
-    //     });
-    // }
 }

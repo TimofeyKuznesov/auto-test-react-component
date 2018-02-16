@@ -5,7 +5,7 @@ export default class JsxComponent extends Component {
     static propTypes={
         name: PropTypes.string,
         id: PropTypes.number,
-        values: PropTypes.object
+        values: PropTypes.array
     }
     render() {
         // if(process.env.NODE_ENV !== "production")

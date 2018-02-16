@@ -5,7 +5,6 @@
 */
 
 
-import PropTypes from "prop-types";
 import _ from "lodash";
 
 function recurse(_keys: string[],variant,ret,_tmp) {
@@ -13,7 +12,7 @@ function recurse(_keys: string[],variant,ret,_tmp) {
     // let tmp = _tmp ? _.cloneDeep(_tmp):{};
     let tmp = _tmp ? JSON.parse(JSON.stringify(_tmp)):{};
     let key=keys.shift();
-    if(Array.isArray(variant))
+    if(variant && Array.isArray(variant[key]))
         variant[key].forEach(val=>{
             tmp[key]=val;
             if(keys.length>0)
@@ -38,7 +37,7 @@ export default class tools {
     }
     static invariant(propTypesFunc: Function): mixed[]{
         let ret=[];
-        if(propTypesFunc.params)
+        if(propTypesFunc && propTypesFunc.params)
             ret=ret.concat(propTypesFunc.params);
         return ret;
     }

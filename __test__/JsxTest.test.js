@@ -31,16 +31,13 @@ describe("TEST",()=>{
         files.forEach(file=>{
             let JsxComponent=require(file).default;
             let props=autoTestTools.buildTestPropsCortege(JsxComponent);
-            // if(process.env.NODE_ENV !== "production")
-            // // eslint-disable-next-line no-console
-            //     console.log(props);
+            if(process.env.NODE_ENV !== "production")
+            // eslint-disable-next-line no-console
+                console.log(props);
             describe(`test render ${file}`,()=>{
                 // if(JsxComponent.propTypes)
                 {
                     props.forEach(prop=>{
-                        if(process.env.NODE_ENV !== "production")
-                        // eslint-disable-next-line no-console
-                            console.log(it);
                         it(`render ${JSON.stringify(prop)}`,()=>{
                             if(process.env.NODE_ENV !== "production")
                                 console.log(prop);
