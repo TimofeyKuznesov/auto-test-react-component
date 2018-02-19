@@ -1,6 +1,6 @@
 {
   "name": "auto-test-react-component",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "build basic auto test for react compenent",
   "main": "dist/index.js",
   "scripts": {
@@ -56,5 +56,9 @@
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/"
     ]
+  },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/TimofeyKuznesov/auto-test-react-component.git"
   }
 }
