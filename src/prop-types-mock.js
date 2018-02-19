@@ -23,7 +23,7 @@ PropsType.object.isRequired.params=[{}];
 
 PropsType.oneOf=function oneOf(params) {
     let ret = _PropsType.oneOf(params);
-    ret.params=params;
+    ret.params=params.concat([undefined]);
     ret.isRequired.params=params;
     return ret;
 };
