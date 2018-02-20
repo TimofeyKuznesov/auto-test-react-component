@@ -12,7 +12,7 @@ function recurse(_keys: string[],variant,ret,_tmp) {
     // let tmp = _tmp ? _.cloneDeep(_tmp):{};
     let tmp = _tmp ? JSON.parse(JSON.stringify(_tmp)):{};
     let key=keys.shift();
-    if(variant && Array.isArray(variant[key]))
+    if(variant && Array.isArray(variant[key])){
         variant[key].forEach(val=>{
             tmp[key]=val;
             if(keys.length>0)
@@ -23,6 +23,14 @@ function recurse(_keys: string[],variant,ret,_tmp) {
                 ret.push(_.cloneDeep(tmp));
             }
         });
+        if(variant[key].length==0)
+        {
+            if(keys.length>0)
+                recurse(keys,variant,ret,tmp);
+            else
+                ret.push(_.cloneDeep(tmp));
+        }
+    }
 }
 
 
