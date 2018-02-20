@@ -1,4 +1,4 @@
-
+import React from "react";
 var _PropsType = require("prop-types/prop-types");
 var PropsType=Object.assign({},_PropsType);
 PropsType.string=_PropsType.string;
@@ -52,6 +52,10 @@ PropsType.arrayOf=function arrayOf(_params) {
     ret.isRequired.params=params;
     return ret;
 };
+
+PropsType.element=_PropsType.element;
+PropsType.element.isRequired.params=[<div/>];
+PropsType.element.params=PropsType.element.isRequired.params.concat([undefined]);
 
 export default PropsType;
 module.exports = PropsType;
