@@ -34,6 +34,34 @@ export default class AutoTestTools {
         return ret;
     }
 
+    buildTestSimplePropsCortege(JsxComponent: React.ComponentType): Array<*>{
+        let ret=[];
+
+        if(JsxComponent && JsxComponent.propTypes)
+        {
+            
+            let propTypes= JsxComponent.propTypes;
+            let variants: {[key: string]: Array<mixed>} ={};
+            let max=0;
+            Object.keys(propTypes).forEach((key)=>{
+                variants[key]=tools.invariant(propTypes[key],key);
+                if(max<variants[key].length)  
+                    max=variants[key].length;
+            });
+            for (let i = 0; i < max; i++) {
+                let tmp: {[key: string]: Array<mixed>}={};
+                Object.keys(variants).forEach(key=>{
+                    let list=variants[key];
+                    tmp[key]=list.length<i ? list[list.length-1] : list[i];
+                });
+                ret.push(tmp);
+            }
+        }
+        if(ret.length==0)
+            ret.push({});
+        return ret;
+    }
+
     findComponents(path){
         return glob(path,{sync:true, absolute: true});
     }
