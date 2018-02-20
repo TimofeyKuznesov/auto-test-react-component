@@ -52,7 +52,7 @@ export default class AutoTestTools {
                 let tmp: {[key: string]: Array<mixed>}={};
                 Object.keys(variants).forEach(key=>{
                     let list=variants[key];
-                    tmp[key]=list.length<i ? list[list.length-1] : list[i];
+                    tmp[key]=list.length>i ?  list[i] : list[list.length-1];
                 });
                 ret.push(tmp);
             }
