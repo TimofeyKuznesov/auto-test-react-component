@@ -24,11 +24,14 @@ Automatic creation of a cortege of props, based on propTypes, for the tested com
 | PropsType.oneOfType([propTypes])|             [map to all variants value for all propTypes and undefined]
 | PropsType.oneOfType([propTypes]).isRequired|  [map to all variants value for all propTypes]
 | PropsType.arrayOf(type)|                      [[type],undefined]
-| PropsType.arrayOf(type).isRequired|           [[type],undefined]
+| PropsType.arrayOf(type).isRequired|           [[type]]
+| PropsType.element(type)|                      [[<div/>],undefined]
+| PropsType.element(type).isRequired|           [[<div/>],]
 
 ## module "auto-test-react-component"
 
-- buildTestPropsCortege(JsxComponent): build cortage props from React Component
+- buildTestPropsCortege(JsxComponent): build all variants cortage props from React Component
+- buildTestSimplePropsCortege(JsxComponent): build short variants cortage props from React Component
 - findComponents(path): find components // Example: findComponents("__test__/**/*.jsx");
 
 # Example
