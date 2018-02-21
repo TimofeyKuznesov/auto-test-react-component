@@ -62,5 +62,4 @@ PropsType.element=_PropsType.element;
 PropsType.element.isRequired.params=[<div/>];
 PropsType.element.params=PropsType.element.isRequired.params.concat([undefined]);
 
-export default PropsType;
 module.exports = PropsType;

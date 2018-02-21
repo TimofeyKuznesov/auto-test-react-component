@@ -40,9 +40,9 @@ export default class AutoTestTools {
         if(JsxComponent && JsxComponent.propTypes)
         {
             
-            let propTypes= JsxComponent.propTypes;
+            let propTypes: {[key:string]:{params?: mixed[]}}= JsxComponent.propTypes;
             let variants: {[key: string]: Array<mixed>} ={};
-            let max=0;
+            let max: number=0;
             Object.keys(propTypes).forEach((key)=>{
                 variants[key]=tools.invariant(propTypes[key]);
                 if(max<variants[key].length)  
@@ -62,7 +62,7 @@ export default class AutoTestTools {
         return ret;
     }
 
-    findComponents(path){
+    findComponents(path: string){
         return glob(path,{sync:true, absolute: true});
     }
 }
