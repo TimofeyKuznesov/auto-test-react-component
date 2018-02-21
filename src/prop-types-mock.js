@@ -1,3 +1,7 @@
+/**
+* @author Timofey Kuznetsov <t.a.kuznetsov@gmail.com>
+* @flow
+*/
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 var _PropsType = require("prop-types/prop-types");

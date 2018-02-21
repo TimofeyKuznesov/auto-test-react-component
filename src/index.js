@@ -13,7 +13,7 @@ import tools from "./tools";
 export {PropTypesMock} from "./prop-types-mock";
 
 export default class AutoTestTools {
-    buildTestPropsCortege(JsxComponent: React.ComponentType): Array<*>{
+    buildTestPropsCortege(JsxComponent: React.ComponentType<any>): Array<*>{
         let ret=[];
         // if(!PropTypes.__isMocked)
         //     if(process.env.NODE_ENV !== "production")
@@ -22,10 +22,10 @@ export default class AutoTestTools {
         if(JsxComponent && JsxComponent.propTypes)
         {
             
-            let propTypes= JsxComponent.propTypes;
+            let propTypes: {[key:string]:{params?: mixed[]}}= JsxComponent.propTypes;
             let variants: {[key: string]: Array<mixed>} ={};
             Object.keys(propTypes).forEach((key)=>{
-                variants[key]=tools.invariant(propTypes[key],key);    
+                variants[key]=tools.invariant(propTypes[key]);    
             });
             ret=ret.concat(tools.cortege(variants));    
         }
@@ -34,7 +34,7 @@ export default class AutoTestTools {
         return ret;
     }
 
-    buildTestSimplePropsCortege(JsxComponent: React.ComponentType): Array<*>{
+    buildTestSimplePropsCortege(JsxComponent: React.ComponentType<any>): Array<*>{
         let ret=[];
 
         if(JsxComponent && JsxComponent.propTypes)
@@ -44,12 +44,12 @@ export default class AutoTestTools {
             let variants: {[key: string]: Array<mixed>} ={};
             let max=0;
             Object.keys(propTypes).forEach((key)=>{
-                variants[key]=tools.invariant(propTypes[key],key);
+                variants[key]=tools.invariant(propTypes[key]);
                 if(max<variants[key].length)  
                     max=variants[key].length;
             });
             for (let i = 0; i < max; i++) {
-                let tmp: {[key: string]: Array<mixed>}={};
+                let tmp: {[key: string]: mixed}={};
                 Object.keys(variants).forEach(key=>{
                     let list=variants[key];
                     tmp[key]=list.length>i ?  list[i] : list[list.length-1];

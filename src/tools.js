@@ -7,17 +7,17 @@
 
 import _ from "lodash";
 
-function recurse(_keys: string[],variant,ret,_tmp) {
-    let keys=_.cloneDeep(_keys);
+function recursive(_keys: string[],variant?:{[key: string]: mixed[]},ret,_tmp) {
+    let keys: string[]=_.cloneDeep(_keys);
     // let tmp = _tmp ? _.cloneDeep(_tmp):{};
-    let tmp = _tmp ? JSON.parse(JSON.stringify(_tmp)):{};
-    let key=keys.shift();
+    let tmp = _tmp ? _.cloneDeep(_tmp) : {};
+    let key: string=keys.shift();
     if(variant && Array.isArray(variant[key])){
         variant[key].forEach(val=>{
             tmp[key]=val;
             if(keys.length>0)
             {
-                recurse(keys,variant,ret,tmp);
+                recursive(keys,variant,ret,tmp);
             }
             else{
                 ret.push(_.cloneDeep(tmp));
@@ -26,7 +26,7 @@ function recurse(_keys: string[],variant,ret,_tmp) {
         if(variant[key].length==0)
         {
             if(keys.length>0)
-                recurse(keys,variant,ret,tmp);
+                recursive(keys,variant,ret,tmp);
             else
                 ret.push(_.cloneDeep(tmp));
         }
@@ -40,10 +40,10 @@ export default class tools {
     static cortege(variant:{}){
         let ret=[];
         let keys=Object.keys(variant);
-        recurse(keys,variant,ret);
+        recursive(keys,variant,ret);
         return ret;
     }
-    static invariant(propTypesFunc: Function): mixed[]{
+    static invariant(propTypesFunc: {params?: mixed[]}): mixed[]{
         let ret=[];
         if(propTypesFunc && propTypesFunc.params)
             ret=ret.concat(propTypesFunc.params);
