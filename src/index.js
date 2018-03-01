@@ -62,7 +62,7 @@ export default class AutoTestTools {
         return ret;
     }
 
-    findComponents(path: string){
+    findComponents(path: string): string[]{
         return glob(path,{sync:true, absolute: true});
     }
 }
