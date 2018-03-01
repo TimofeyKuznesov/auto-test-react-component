@@ -3,6 +3,7 @@
 .eslintrc.js
 .gitignore
 .npmignore
+.auto-test-react.js
 
 /.vscode/
 src/
