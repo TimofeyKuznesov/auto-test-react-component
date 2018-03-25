@@ -43,6 +43,23 @@ export default class tools {
         recursive(keys,variant,ret);
         return ret;
     }
+
+    static cortegeSimple(variant:{}){
+        let max: number=0;
+        let ret=[];
+        Object.keys(variant).forEach(key=>{
+            max=variant[key].length>max ? variant[key].length : max;
+        });
+        for (let i = 0; i < max; i++) {
+            let tmp: {[key: string]: mixed}={};
+            Object.keys(variant).forEach(key=>{
+                let list=variant[key];
+                tmp[key]=list.length>i ?  list[i] : list[list.length-1];
+            });
+            ret.push(tmp);
+        }
+        return ret;
+    }
     static invariant(propTypesFunc: {params?: mixed[]}): mixed[]{
         let ret=[];
         if(propTypesFunc && propTypesFunc.params)

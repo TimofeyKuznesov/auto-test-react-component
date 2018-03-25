@@ -42,20 +42,10 @@ export default class AutoTestTools {
             
             let propTypes: {[key:string]:{params?: mixed[]}}= JsxComponent.propTypes;
             let variants: {[key: string]: Array<mixed>} ={};
-            let max: number=0;
             Object.keys(propTypes).forEach((key)=>{
                 variants[key]=tools.invariant(propTypes[key]);
-                if(max<variants[key].length)  
-                    max=variants[key].length;
             });
-            for (let i = 0; i < max; i++) {
-                let tmp: {[key: string]: mixed}={};
-                Object.keys(variants).forEach(key=>{
-                    let list=variants[key];
-                    tmp[key]=list.length>i ?  list[i] : list[list.length-1];
-                });
-                ret.push(tmp);
-            }
+            ret=tools.cortegeSimple(variants);
         }
         if(ret.length==0)
             ret.push({});
