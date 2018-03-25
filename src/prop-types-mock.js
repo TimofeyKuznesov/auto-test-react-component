@@ -5,6 +5,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import config from "./config";
+import tools from "./tools";
+
 var _PropsType = require("prop-types/prop-types");
 var PropsType=Object.assign({},_PropsType);
 
@@ -69,6 +71,19 @@ PropsType.arrayOf=function arrayOf(_params) {
     return ret;
 };
 
+
+PropsType.shape=function shape(obj) {
+    let params={};
+    
+    Object.keys(obj).forEach(key=>{
+        params[key]=obj[key].params;
+    });
+    let ret = _PropsType.shape(obj);
+    let variants=config.shapeSimple ? tools.cortegeSimple(params) : tools.cortege(params);
+    ret.params=variants.concat([undefined]);
+    ret.isRequired.params=params;
+    return ret;
+};
 
 
 module.exports = PropsType;

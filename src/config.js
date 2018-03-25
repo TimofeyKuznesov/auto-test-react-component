@@ -19,7 +19,8 @@ let config={
         array: [[]],
         object: [{}],
         element: [<div/>]
-    }
+    },
+    shapeSimple: false
 };
 
 if (fs.existsSync(filename) && fs.statSync(filename).isFile()) {
