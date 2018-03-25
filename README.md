@@ -23,16 +23,35 @@ Automatic creation of a cortege of props, based on propTypes, for the tested com
 | PropsType.oneOf([values]).isRequired|         [values]
 | PropsType.oneOfType([propTypes])|             [map to all variants value for all propTypes and undefined]
 | PropsType.oneOfType([propTypes]).isRequired|  [map to all variants value for all propTypes]
+| PropsType.shape([propTypes])|             [map to all variants value for all propTypes properties and undefined]
+| PropsType.shape([propTypes]).isRequired|  [map to all variants value for all propTypes properties]
 | PropsType.arrayOf(type)|                      [[type],undefined]
 | PropsType.arrayOf(type).isRequired|           [[type]]
-| PropsType.element(type)|                      [[<div/>],undefined]
-| PropsType.element(type).isRequired|           [[<div/>],]
+| PropsType.element(type)|                      [[\<div/>],undefined]
+| PropsType.element(type).isRequired|           [[\<div/>],]
 
 ## module "auto-test-react-component"
 
 - buildTestPropsCortege(JsxComponent): build all variants cortage props from React Component
 - buildTestSimplePropsCortege(JsxComponent): build short variants cortage props from React Component
 - findComponents(path): find components // Example: findComponents("__test__/**/*.jsx");
+
+## config file .auto-test-react.js for rewrite options
+
+```javascript
+config={
+    defaultCortage:{
+        string: ["","string"],
+        number: [-10,0,10],
+        bool: [false,true],
+        func: [()=>{}],
+        array: [[]],
+        object: [{}],
+        element: [<div/>]
+    },
+    shapeSimple: false // enable build cortege for shape in simpe mode
+};
+````
 
 # Example
 
