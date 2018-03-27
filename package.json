@@ -1,6 +1,6 @@
 {
   "name": "auto-test-react-component",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "build basic auto test for react components",
   "main": "dist/index.js",
   "scripts": {
@@ -31,12 +31,8 @@
     "flow-typed": "^2.3.0",
     "glob": "^7.1.2",
     "jest": "^22.4.3",
-    "jest-junit-reporter": "^1.1.0",
-    "jest-sonar-reporter": "^2.0.0",
-    "jscoverage": "^0.6.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "sonar-scanner": "^3.0.3"
+    "react-dom": "^16.2.0"
   },
   "dependencies": {
     "lodash": "^4.17.5",
