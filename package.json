@@ -1,6 +1,6 @@
 {
   "name": "auto-test-react-component",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "build basic auto test for react components",
   "main": "dist/index.js",
   "scripts": {
